@@ -20,7 +20,7 @@ library("tidyverse")
 To understand how APIs work, we will take the New York Times Article Search API as an example. This API allows users to search articles by string and dates, and returns counts of articles and a short description of each article (but not the full text). You can create a new account and obtain a key [here](https://developer.nytimes.com/get-started). Afterwards, paste your key here:
 
 ```{r, eval = FALSE}
-apikey <- "r8qoNqHOeA53AHsEGWTKiW5y0JSUtuc7"
+apikey <- "ATjyl1PdubGbKbV9HMejBCtde7HucxH9"
 ```
 
 The fist step is to identify the base URL of the endpoint and the parameters that we can use to query the API, for the Article Search API you can find this URL structure [here](https://developer.nytimes.com/docs/articlesearch-product/1/overview). Now we can do a first API call using the **httr** package.
@@ -202,6 +202,7 @@ abline(v = as.Date("2008/11/04"), lty = "dashed", col = "darkred")
 Lastly, let us look at the Archive API which allows to download all materials for a given month. In the public version of the API, articles do not contain full texts, but usually headlines and very often at least one of abstract, snippet, and/or lead lead paragraphs The structure of the URL/endpoint can be found on  https://developer.nytimes.com/docs/archive-product/1/overview. For example, the correct URL to request all articles September 2008 would be https://api.nytimes.com/svc/archive/v1/2008/9.json?api-key=yourkey. We will use the `sprintf` function from last week to create this URL for July 1855 as an example:
 
 ```{r}
+#July 1885
 exemplary_archive_url <-sprintf("https://api.nytimes.com/svc/archive/v1/%g/%g.json?api-key=%s", 1855, 7, apikey)
 exemplary_archive_url
 ```
