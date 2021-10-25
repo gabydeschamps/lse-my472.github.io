@@ -39,6 +39,7 @@ driver$navigate(url)
 This should open a browser window (in Firefox) with the specified URL.
 
 Here's how we would check that it worked:
+Note: If it doesnt work, not likely to load the webpage on firefox. If it dies driver$getPageSource() probably returns anerror or it is empty or null. 
 
 ```{r}
 # Get source code of the page
@@ -50,16 +51,19 @@ substr(src, 1, 1000)
 
 First things first: the following code will remove the cookie banner at the bottom. (_This is just to show you how to switch between frames — the script would run successfully even with the cookie banner_)
 
+Note: you can usually find out frame number / name through the browser inspect. You may have to search for frame / iframe
+
 ```{r}
 # The cookie pop-up window is on frame two
 driver$switchToFrame(2)
 
 # We need to click on "Yes, I'm happy" button:
 # 1. Use a command to locate the button on the page
-accept_button <- driver$___________(using = "xpath", 
-                                    value = "/html/body/div/div[3]/div[3]/div/div/button[1]")
+accept_button <- driver$findElement(using = "xpath", 
+                                    value = "/html/body/div/div[2]/div[3]/div/div/button[1]")
+
 # 2. Click on the button:
-accept_button$_____________()
+accept_button$clickElement()
 
 # Switch back to default frame
 driver$switchToFrame(NULL)
@@ -69,7 +73,7 @@ Let's assume we want to see the results of the constituency here. We can feed po
 
 ```{r}
 # 1. identify the node for input
-search_field <- driver$findElement(using = 'class name', value = '______________')
+search_field <- driver$findElement(using = 'class name', value = 'ge-lookup__input')
 
 # 2. send the post code
 search_field$sendKeysToElement(list("WC2A 2AE"))
@@ -83,14 +87,14 @@ while(driver$findElement(using = 'class name',                                  
 }                         # the while() loop runs until you get some suggestions!
 
 # 4. click "Enter"
-search_field$sendKeysToElement(list(key = "______"))
+search_field$sendKeysToElement(list(key = "enter"))
 ```
 
 Now that we have the results table displayed, we will scrape the name of constituency and the table.
 
 ```{r}
 ## get the constituency name
-const_name <- driver$findElement(using = 'class name', value = '_____________')$getElementText() 
+const_name <- driver$findElement(using = 'class name', value = 'ge-result__name')$getElementText() 
 
 ## get the div with the result information
 res_div <- driver$findElement(using = 'class name', value = 'ge-result')
