@@ -8,11 +8,12 @@ output: html_document
 Note: The precise numbers of articles returned by the different queries can change somewhat over time as it appears the data in the Archive is still subject to revisions.
 
 ### Article Search API
+You look the number of articles with "inequality" for example. You get the number of hits and a sample of 10 articles. 
 
 Loading packages:
 
 ```{r}
-library("httr")
+library("httr") #We can access any API with this package. Send a request to get data and get it. 
 library("jsonlite")
 library("tidyverse")
 ```
@@ -203,6 +204,7 @@ Lastly, let us look at the Archive API which allows to download all materials fo
 
 ```{r}
 #July 1885
+#Spritnf. If we have a string and we want to repeatedly change things. It puts placeholders (%g) we supply 3 numbers and it substitues them into %g.
 exemplary_archive_url <-sprintf("https://api.nytimes.com/svc/archive/v1/%g/%g.json?api-key=%s", 1855, 7, apikey)
 exemplary_archive_url
 ```

@@ -8,7 +8,7 @@ output: html_document
 Loading packages:
 
 ```{r}
-library("jsonlite")
+library("jsonlite") #Read JSON files in R
 library("tidyverse")
 ```
 

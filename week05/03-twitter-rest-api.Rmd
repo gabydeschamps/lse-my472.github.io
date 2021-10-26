@@ -10,7 +10,7 @@ In this file, we will look at static Twitter data, either recent tweets or user-
 Loading packages:
 
 ```{r}
-library("rtweet")
+library("rtweet") #Uses an underlying package like httr and then builds specific functions for tweeter. If an API has a package great, if not (or if its bad package) then use httr. 
 library("stringr")
 library("tidyverse")
 ```
