@@ -19,21 +19,16 @@ library("tidyverse")
 To load the list containing your authentication whenever you run such a script, you can then simply add the following cell in the future (if the `myauthentication.rda` file is contained in the directory):
 
 ```{r}
-load("myauthentication.rda")
+load("authentication.rda")
 ```
 
 Lastly, if the cell below outputs `LSEnews` after running, we are good to go:
 
 ```{r}
-# Replace the app name with your own!
-twitter_token <- create_token(app = "MY472_Gaby", 
-                              consumer_key = authentication$consumer_key,
-                              consumer_secret = authentication$consumer_secret,
-                              access_token = authentication$access_token,
-                              access_secret = authentication$access_token_secret)
-
 lookup_users("LSEnews")$screen_name
 ```
+
+
 
 ### Searching recent tweets
 
