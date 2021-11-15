@@ -211,6 +211,7 @@ p + geom_point(aes(shape = post_type, color = post_type))
 ## Dealing with cases where a lot of points are in some areas
 
 Jittering points can avoid "overplotting", however, can also easily be misleading:
+Jittering spreads out the data. (be careful so people don't think there is variation where there is none).
 
 ```{r}
 p <- ggplot(df, aes(x = party, y = comments_count)) + ylab("comments count")
